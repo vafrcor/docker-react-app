@@ -6,5 +6,5 @@ before_install:
   - docker build -t vafrcor/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run vafrcor/docker-react CI=true && npm run test -- --coverage
+  - docker run -e CI=true vafrcor/docker-react npm run test -- --coverage
 
