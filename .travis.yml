@@ -8,3 +8,17 @@ before_install:
 script:
   - docker run -e CI=true vafrcor/docker-react npm run test -- --coverage
 
+deploy:
+  # edge: true
+  on: 
+    branch: master
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "dcoker-react-app"
+  env: "DcokerReactApp-env"
+  bucket_name: "elasticbeanstalk-us-east-2-130518357428"
+  bucket_path: "dcoker-react-app"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
+    
